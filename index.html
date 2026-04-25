@@ -1106,7 +1106,7 @@
         // ===== BACKGROUND MUSIC =====
         (function () {
             var musicBtn = document.getElementById('musicToggle');
-            var isPlaying = true;
+            var isPlaying = false;
             var audio = new Audio('Shatamanam_Bhavati_Title_Song_Full_Video_-_Shatamanam_Bhavati_-_Sharwanand,_Anupama(256k).mp3');
             audio.loop = true;
             audio.volume = 0.4;
@@ -1114,6 +1114,9 @@
             // Set start time to 5 seconds and loop back from 46 seconds
             audio.addEventListener('loadedmetadata', function () {
                 audio.currentTime = 5;
+                audio.play().catch(function () {});
+                isPlaying = true;
+                musicBtn.ClassList.add('playing');
             });
 
             audio.addEventListener('timeupdate', function () {
